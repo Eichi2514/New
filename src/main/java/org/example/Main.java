@@ -5,8 +5,9 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in); //고정
         String data = sc.nextLine();
-        System.out.printf(data);
+        for (int a = 0; a <= 100; a++)
+            System.out.println(data +":"+ a);
     }
 }
