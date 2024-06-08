@@ -6,10 +6,10 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String data = sc.nextLine();
+        String data = sc.next();
+        String[] a = data.split("[:]");
 
-        for (int a = 0; a < data.length(); a++) {
-            System.out.println("\'"+data.charAt(a)+"\'");
-        }
+        int d = Integer.parseInt(a[1]);
+        System.out.println(d);
     }
 }
