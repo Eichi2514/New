@@ -6,8 +6,9 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int data = sc.nextInt();
+        String data = sc.next();
+        int b  = Integer.parseInt(data, 8);
 
-        System.out.printf("%X",data);
+        System.out.printf("%d",b);
     }
 }
