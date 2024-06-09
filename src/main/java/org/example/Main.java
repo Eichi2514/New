@@ -6,9 +6,9 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        char data = sc.nextLine().charAt(0);
-        int b = (int)data;
+        int data = sc.nextInt();
+        char b = (char)data;
 
-        System.out.printf("%d",b);
+        System.out.println(b);
     }
 }
