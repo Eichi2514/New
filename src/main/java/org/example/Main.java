@@ -6,8 +6,9 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        long a = sc.nextLong();
+        char a = sc.next().charAt(0);
+        char b = (char) (a+1);
 
-        System.out.println(-a);
+        System.out.println(b);
     }
 }
