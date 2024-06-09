@@ -8,6 +8,6 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int data = sc.nextInt();
 
-        System.out.printf("%x",data);
+        System.out.printf("%X",data);
     }
 }
