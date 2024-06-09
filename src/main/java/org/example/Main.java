@@ -6,9 +6,9 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int data = sc.nextInt();
-        char b = (char)data;
+        long a = sc.nextLong();
+        long b = sc.nextLong();
 
-        System.out.println(b);
+        System.out.println(a+b);
     }
 }
