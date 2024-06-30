@@ -9,6 +9,7 @@ public class Main {
         float a = sc.nextFloat();
         float b = sc.nextFloat();
         float c = sc.nextFloat();
+        float c2 = sc.nextFloat();
         float d = (a+b+c/3);
 
         System.out.printf("%.0f\n",a+b+c);
