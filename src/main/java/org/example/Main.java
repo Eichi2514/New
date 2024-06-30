@@ -6,13 +6,12 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        float a = sc.nextFloat();
-        float b = sc.nextFloat();
-        float c = sc.nextFloat();
-        float c2 = sc.nextFloat();
-        float d = (a+b+c/3);
+        int a = sc.nextInt();
 
-        System.out.printf("%.0f\n",a+b+c);
-        System.out.printf("%.1f\n",d);
+        for (int i = 0; i < a; i++) {
+            int b = sc.nextInt();
+            System.out.println(b);
+        }
+
     }
 }
