@@ -6,10 +6,10 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int a = sc.nextInt();
+        char a = sc.nextLine().charAt(0);
 
-        for (int i = a-1; i >= 0; i--) {
-            System.out.println(i);
+        for (char i = 'a'; i <= a; i++) {
+            System.out.printf("%s ",i);
         }
 
     }
