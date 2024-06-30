@@ -6,11 +6,11 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        char a = sc.nextLine().charAt(0);
+        String a = sc.next();
+        int b = Integer.parseInt(a, 16);
 
-        for (char i = 'a'; i <= a; i++) {
-            System.out.printf("%s ",i);
+        for (int i = 1; i < 16; i++) {
+            System.out.printf("%X*%X=%X\n", b, i, b * i);
         }
-
     }
 }
