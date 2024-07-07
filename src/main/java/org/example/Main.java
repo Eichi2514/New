@@ -1,34 +1,33 @@
 package org.example;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        int[] numbers = new int[10];
-        numbers[0] = 1;
-        numbers[1] = 2;
-        numbers[2] = 3;
-        numbers[3] = 4;
-        numbers[4] = 5;
-        numbers[5] = 6;
-        numbers[6] = 7;
-        numbers[7] = 8;
-        numbers[8] = 9;
-        numbers[9] = 10;
-        System.out.println(Solution.solution(numbers));
+        System.out.println(Solution.solution(1, 2, 3, 5));
     }
 }
 
 class Solution {
-    public static double solution(int[] numbers) {
-        double answer = 0;
-        double sum = 0;
+    public static int[] solution(int numer1, int denom1, int numer2, int denom2) {
+        int[] answer = new int[2];
+        int max = 0;
 
-        for(int i=0; i<numbers.length; i++) {
-            sum += numbers[i];
+        int numer = numer1 * denom2 + numer2 * denom1;
+        int denom = denom1 * denom2;
+
+        for (int i = 1; i <= denom && i <= numer; i++) {
+            if (numer % i == 0 && denom % i == 0) {
+                max = i;
+            }
         }
-        answer = sum/numbers.length;
+
+        answer[0] = numer / max;
+        answer[1] = denom / max;
+
         return answer;
     }
 }
