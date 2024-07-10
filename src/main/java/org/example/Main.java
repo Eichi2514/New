@@ -16,18 +16,21 @@ public class Main {
 //        numbers[7] = 1;
 //        numbers[8] = 1;
 //        numbers[9] = 1;
-        System.out.println(Solution.solution(2,10));
+        System.out.println(Solution.solution(3, 2));
     }
 }
 
 class Solution {
-    public static int solution(int n, int t) {
-
-        for (int i = 0; i < t; i++) {
-            n *=2;
+    public static int solution(int balls, int share) {
+        double answer = 1;
+        if (balls != share) {
+            for (int i = balls; i > balls - share; i--) {
+                answer *= i;
+            }
+            for (int i = share; i > 0; i--) {
+                answer /= i;
+            }
         }
-        int answer = n;
-
-        return answer;
+        return (int) answer;
     }
 }
