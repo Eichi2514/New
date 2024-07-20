@@ -1,45 +1,30 @@
 package org.example;
 
 
-import java.util.ArrayList;
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        int[][] dots = new int[5][5];
-        dots[0][0] = 0;
-        dots[0][1] = 0;
-        dots[0][2] = 0;
-        dots[0][3] = 0;
-        dots[0][4] = 0;
-        dots[1][0] = 0;
-        dots[1][1] = 0;
-        dots[1][2] = 0;
-        dots[1][3] = 0;
-        dots[1][4] = 0;
-        dots[2][0] = 0;
-        dots[2][1] = 0;
-        dots[2][2] = 0;
-        dots[2][3] = 0;
-        dots[2][4] = 0;
-        dots[3][0] = 0;
-        dots[3][1] = 0;
-        dots[3][2] = 0;
-        dots[3][3] = 0;
-        dots[3][4] = 0;
-//        System.out.println(Solution.solution(dots));
+        int[] dots = new int[6];
+        dots[0] = -5;
+        dots[1] = -3;
+        dots[2] = -1;
+        dots[3] = 1;
+        dots[4] = 3;
+        dots[5] = 5;
+        System.out.println(Solution.solution(dots));
     }
 }
 
 class Solution {
-    public int solution(int[][] dots) {
+    public static int solution(int[] common) {
         int answer = 0;
-        if (Math.abs((dots[0][1] - dots[1][1]) * (dots[2][0] - dots[3][0])) == Math.abs((dots[2][1] - dots[3][1]) * (dots[0][0] - dots[1][0])))
-            return 1;
-        if (Math.abs((dots[0][1] - dots[2][1]) * (dots[1][0] - dots[3][0])) == Math.abs((dots[1][1] - dots[3][1]) * (dots[0][0] - dots[2][0])))
-            return 1;
-        if (Math.abs((dots[0][1] - dots[3][1]) * (dots[1][0] - dots[2][0])) == Math.abs((dots[1][1] - dots[2][1]) * (dots[0][0] - dots[3][0])))
-            return 1;
+        if (common[1] - common[0] == common[2] - common[1]) {
+            answer = common[common.length - 1] + (common[1] - common[0]);
+        } else {
+            answer = common[common.length - 1] * common[1] / common[0];
+        }
         return answer;
     }
 }
