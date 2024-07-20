@@ -27,46 +27,28 @@ public class Main {
         dots[3][2] = 0;
         dots[3][3] = 0;
         dots[3][4] = 0;
-        System.out.println(Solution.solution(dots));
+//        System.out.println(Solution.solution(dots));
     }
 }
 
 class Solution {
-    public static int solution(int[][] board) {
+    public int solution(int[][] dots) {
         int answer = 0;
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board.length; j++) {
-                if (board[i][j] == 1) {
-                    if (i > 0 && j > 0) {
-                        if (board[i - 1][j - 1] == 0) board[i - 1][j - 1] = 2;
-                    }
-                    if (i > 0) {
-                        if (board[i - 1][j] == 0) board[i - 1][j] = 2;
-                    }
-                    if (i > 0 && j < board.length-1) {
-                        if (board[i - 1][j + 1] == 0) board[i - 1][j + 1] = 2;
-                    }
-                    if (j > 0) {
-                        if (board[i][j - 1] == 0) board[i][j - 1] = 2;
-                    }
-                    if (j < board.length-1) {
-                        if (board[i][j + 1] == 0) board[i][j + 1] = 2;
-                    }
-                    if (j > 0 && i < board.length-1) {
-                        if (board[i + 1][j - 1] == 0) board[i + 1][j - 1] = 2;
-                    }
-                    if (i < board.length-1) {
-                        if (board[i + 1][j] == 0) board[i + 1][j] = 2;
-                    }
-                    if (i < board.length-1 && j < board.length-1) {
-                        if (board[i + 1][j + 1] == 0) board[i + 1][j + 1] = 2;
-                    }
-                }
+        if(Math.abs(dots[0][0] - dots[1][0]) == Math.abs(dots[2][0] - dots[3][0])){
+            if(Math.abs(dots[0][1] - dots[1][1]) == Math.abs(dots[2][1] - dots[3][1]) ){
+                answer = 1;
             }
         }
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board.length; j++) {
-                if (board[i][j] == 0) answer++;
+
+        if(Math.abs(dots[0][0] - dots[2][0]) == Math.abs(dots[1][0] - dots[3][0])){
+            if(Math.abs(dots[0][1] - dots[2][1]) == Math.abs(dots[1][1] - dots[3][1]) ){
+                answer = 1;
+            }
+        }
+
+        if(Math.abs(dots[0][0] - dots[3][0]) == Math.abs(dots[2][0] - dots[1][0])){
+            if(Math.abs(dots[0][1] - dots[3][1]) == Math.abs(dots[2][1] - dots[1][1]) ){
+                answer = 1;
             }
         }
         return answer;
