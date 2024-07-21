@@ -1,31 +1,14 @@
 package org.example;
 
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        String[] dots = {"aya", "yee", "u", "maa", "wyeoo"};
-        System.out.println(Solution.solution(dots));
-    }
-}
-
-class Solution {
-    public static int solution(String[] babbling) {
-        int answer = 0;
-        String[] bab = {"aya", "ye", "woo", "ma"};
-        for (int i = 0; i < babbling.length; i++) {
-            for (int j = 0; j < bab.length; j++) {
-                if (babbling[i].contains(bab[j])) {
-                    babbling[i] = babbling[i].replace(bab[j], " ");
-                }
-            }
-        }
-        for (int i = 0; i < babbling.length; i++) {
-            babbling[i] = babbling[i].trim();
-            if (babbling[i].equals("")) answer++;
-        }
-        return answer;
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int sign = 0;
+        if (a%4 == 0 && a%100 != 0 || a%400 == 0) sign = 1;
+        System.out.println(sign);
     }
 }
