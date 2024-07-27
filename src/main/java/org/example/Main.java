@@ -9,23 +9,16 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        int n = Integer.parseInt(bf.readLine());
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n-i-1; j++){
-                bw.write(" ");
+        String tmp = bf.readLine();
+        int count = 0;
+        String b = "0";
+        for (int i = 0; i < tmp.length(); i++) {
+            if (tmp.charAt(i) == tmp.charAt(tmp.length()-i-1)) {
+                count++;
             }
-            for (int j = 0; j < (i*2)+1; j++){
-                bw.write("*");
-            }bw.newLine();
         }
-        for (int i = n-1; i > 0; i--) {
-            for (int j = n-i; j > 0; j--){
-                bw.write(" ");
-            }
-            for (int j = ((i-1)*2)+1; j > 0; j--){
-                bw.write("*");
-            }bw.newLine();
-        }
+        if (count == tmp.length()) b = "1";
+        bw.write(b);
         bw.flush();
     }
 }
