@@ -2,7 +2,7 @@ package org.example;
 
 
 import java.util.Arrays;
-import java.util.Scanner;
+import java.util.List;
 import java.io.*;
 
 public class Main {
@@ -10,15 +10,13 @@ public class Main {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         String tmp = bf.readLine();
-        int count = 0;
-        String b = "0";
-        for (int i = 0; i < tmp.length(); i++) {
-            if (tmp.charAt(i) == tmp.charAt(tmp.length()-i-1)) {
-                count++;
+        String[] crat = {"c=", "c-","dz=","d-","lj","nj", "s=","z="};
+        for (int i = 0; i < 8; i++) {
+            if (tmp.contains(crat[i])) {
+                tmp = tmp.replace(crat[i], "A");
             }
         }
-        if (count == tmp.length()) b = "1";
-        bw.write(b);
+        bw.write(tmp.length()+"");
         bw.flush();
     }
 }
