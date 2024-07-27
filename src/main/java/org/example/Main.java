@@ -1,21 +1,31 @@
 package org.example;
 
 
+import java.util.Arrays;
 import java.util.Scanner;
+import java.io.*;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int a = sc.nextInt();
-        int b = sc.nextInt();
-        int h = 0;
-        int time = (a * 60) + b;
-        time -= 45;
-        if (time < 0) time += (24*60);
-        while (time >= 60) {
-            h++;
-            time -= 60;
+    public static void main(String[] args) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int n = Integer.parseInt(bf.readLine());
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n-i-1; j++){
+                bw.write(" ");
+            }
+            for (int j = 0; j < (i*2)+1; j++){
+                bw.write("*");
+            }bw.newLine();
         }
-        System.out.println(h + " " + time);
+        for (int i = n-1; i > 0; i--) {
+            for (int j = n-i; j > 0; j--){
+                bw.write(" ");
+            }
+            for (int j = ((i-1)*2)+1; j > 0; j--){
+                bw.write("*");
+            }bw.newLine();
+        }
+        bw.flush();
     }
 }
