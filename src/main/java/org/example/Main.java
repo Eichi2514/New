@@ -9,14 +9,25 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        String tmp = bf.readLine();
-        String[] crat = {"c=", "c-","dz=","d-","lj","nj", "s=","z="};
-        for (int i = 0; i < 8; i++) {
-            if (tmp.contains(crat[i])) {
-                tmp = tmp.replace(crat[i], "A");
+        int n = Integer.parseInt(bf.readLine());
+        int[][] p = new int[100][100];
+        for (int i = 0; i < n; i++) {
+            String[] xy = bf.readLine().split(" ");
+            int x = Integer.parseInt(xy[0])-1;
+            int y = Integer.parseInt(xy[1])-1;
+            for (int j = x; j < x+10; j++) {
+                for (int k = y; k < y+10; k++) {
+                    p[j][k] = 1;
+                }
             }
         }
-        bw.write(tmp.length()+"");
+        int count = 0;
+        for (int i = 0; i < 100; i++) {
+            for (int j = 0; j < 100; j++) {
+                if (p[i][j] == 1) count++;
+            }
+        }
+        bw.write(count+"");
         bw.flush();
     }
 }
