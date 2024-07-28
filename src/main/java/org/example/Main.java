@@ -9,7 +9,8 @@ public class Main {
         int y = sc.nextInt();
         int m = sc.nextInt();
         int d = sc.nextInt();
-        if (((y-m+d)%10) == 0) System.out.println("대박");
+        int a = (y+m+d)/100;
+        if ((a%2) == 0) System.out.println("대박");
         else System.out.println("그럭저럭");
     }
 }
