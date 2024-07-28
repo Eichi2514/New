@@ -7,10 +7,12 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int age = sc.nextInt();
-        int year = (2013 - age) % 100;
-        int month = 1;
-        if (age <= 13) month = 3;
-        System.out.println(year + " " + month);
+        String a = sc.next();
+        String b = sc.next();
+        int C = sc.nextInt();
+        String c;
+        if (C < 10) c = "0" + C;
+        else c = "" + C;
+        System.out.println(a + b + c);
     }
 }
