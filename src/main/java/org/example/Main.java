@@ -1,27 +1,27 @@
 package org.example;
 
 
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
-        int[] a = {5, 2, 1, 7, 5};
-        System.out.println(Solution.solution("banana", "nan"));
+        int[][] a = {{2, 3}, {0, 7}, {5, 9}, {6, 10}};
+        System.out.println(Solution.solution("rermgorpsam", a));
     }
 }
 
 class Solution {
-    public static int solution(String my_string, String is_prefix) {
-        int answer = 0;
-        int count = 0;
-        if (my_string.length() > is_prefix.length()) {
-            for (int i = 0; i < is_prefix.length(); i++) {
-                if (my_string.charAt(i) == is_prefix.charAt(i)) {
-                    count++;
-                }
+    public static String solution(String my_string, int[][] queries) {
+        String answer = "";
+        String a = "";
+        String b = "";
+        for (int i = 0; i < queries.length; i++) {
+            a = my_string.substring(0, queries[i][0]);
+            b = my_string.substring(queries[i][1] + 1, my_string.length());
+            for (int j = queries[i][1]; j >= queries[i][0]; j--) {
+                answer += my_string.charAt(j);
             }
+            my_string = a + answer + b;
+            answer = "";
         }
-        if (count == is_prefix.length()) answer = 1;
-        return answer;
+        return my_string;
     }
 }
