@@ -6,15 +6,15 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         String[] a = {"0123456789","9876543210","9999999999999"};
-        System.out.println(Solution.solution("123456789"));
+        System.out.println(Solution.solution(3));
     }
 }
 
 class Solution {
-    public static int solution(String num_str) {
-        int answer = 0;
-        for (int i = 0; i < num_str.length(); i++) {
-            answer += num_str.charAt(i) - '0';
+    public static int[][] solution(int n) {
+        int[][] answer = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            answer[i][i] = 1;
         }
         return answer;
     }
