@@ -6,19 +6,16 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         String[] a = {"0123456789", "9876543210", "9999999999999"};
-        System.out.println(Solution.solution("Progra21Sremm3",6,12));
+        System.out.println(Solution.solution("Progra21Sremm3", 2, 3));
     }
 }
 
 class Solution {
-    public static String solution(String my_string, int s, int e) {
+    public static String solution(String my_string, int m, int c) {
         String answer = "";
-        String a = my_string.substring(0, s);
-        String b = my_string.substring(e+1, my_string.length());
-        for (int i = e; i >= s; i--) {
-            answer += my_string.charAt(i) + "";
+        for (int i = c - 1; i < my_string.length(); i += m) {
+            answer += my_string.charAt(i);
         }
-        answer = a + answer + b;
         return answer;
     }
 }
