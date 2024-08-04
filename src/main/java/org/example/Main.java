@@ -5,20 +5,21 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        int[] a = {1, 16, 6, 15, 0, 10, 11, 3};
-        System.out.println(Solution.solution("apporoograpemmemprs", a));
+        int[] a = {1, 0, 0, 1};
+        System.out.println(Solution.solution("1 + 1"));
     }
 }
 
 class Solution {
-    public static String solution(String my_string, int[] indices) {
-        String answer = "";
-        String[] tmp = my_string.split("");
-        for (int i = 0; i < indices.length; i++) {
-            tmp[indices[i]] = "";
-        }
-        for (int i = 0; i < tmp.length; i++) {
-            answer += tmp[i];
+    public static int solution(String binomial) {
+        int answer = 0;
+        String[] tmp = binomial.split(" ");
+        if (tmp[1].equals("+")) {
+            answer = Integer.parseInt(tmp[0]) + Integer.parseInt(tmp[2]);
+        } else if (tmp[1].equals("-")) {
+            answer = Integer.parseInt(tmp[0]) - Integer.parseInt(tmp[2]);
+        } else if (tmp[1].equals("*")) {
+            answer = Integer.parseInt(tmp[0]) * Integer.parseInt(tmp[2]);
         }
         return answer;
     }
