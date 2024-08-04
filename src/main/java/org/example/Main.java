@@ -1,27 +1,24 @@
 package org.example;
 
 
-import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-//        int[] a = {1, 2, 3, 4, 5};
+        int[] a = {1, 2, 3, 4, 5, 6};
 //        int[][] b = {{0, 1, 2}, {1, 2, 3}, {2, 3, 4}, {3, 4, 5}};
-        System.out.println(Solution.solution("banana", "ana"));
+        System.out.println(Solution.solution(a));
     }
 }
 
 class Solution {
-    public static int solution(String myString, String pat) {
-        int answer = 0;
-        String[] tmp = new String[myString.length()];
-        for (int i = 0; i < myString.length(); i++) {
-            tmp[i] = myString.substring(i);
+    public static int[] solution(int[] arr) {
+        int idx = 1;
+        while (idx < arr.length) {
+            idx *= 2;
         }
-        for (int i = 0; i < tmp.length; i++) {
-            if (tmp[i].startsWith(pat)) {
-                answer++;
-            }
+        int[] answer = new int[idx];
+        for (int i = 0; i < arr.length; i++) {
+            answer[i] = arr[i];
         }
         return answer;
     }
