@@ -1,28 +1,49 @@
 package org.example;
 
 
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        int[] a = {12, 4, 15, 1, 14};
-//        int[][] b = {{0, 1, 2}, {1, 2, 3}, {2, 3, 4}, {3, 4, 5}};
-        System.out.println(Solution.solution(a));
+//        int[] a = {5, 4, 3, 2, 1, 0};
+//        int[] b = {4, 1, 2};
+        System.out.println(Solution.solution(9));
     }
 }
 
 class Solution {
-    public static int solution(int[] num_list) {
-        int answer = 0;
-        for (int i = 0; i < num_list.length; i++) {
-            while (num_list[i] != 1) {
-                if ((num_list[i] % 2) == 0) {
-                    num_list[i] /= 2;
-                    answer++;
-                }
-                else {
-                    num_list[i] = (num_list[i] - 1) / 2;
-                    answer++;
-                }
+    public static int[][] solution(int n) {
+        int[][] answer = new int[n][n];
+        int num = 1;
+        int x = 0;
+        int y = -1;
+        for (int i = 0; i < n; i++) {
+            y++;
+            answer[x][y] = num;
+            num++;
+        }
+        while (n > 1) {
+            n--;
+            for (int i = 0; i < n; i++) {
+                x++;
+                answer[x][y] = num;
+                num++;
+            }
+            for (int i = 0; i < n; i++) {
+                y--;
+                answer[x][y] = num;
+                num++;
+            }
+            n--;
+            for (int i = 0; i < n; i++) {
+                x--;
+                answer[x][y] = num;
+                num++;
+            }
+            for (int i = 0; i < n; i++) {
+                y++;
+                answer[x][y] = num;
+                num++;
             }
         }
         return answer;
