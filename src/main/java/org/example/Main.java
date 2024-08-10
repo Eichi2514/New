@@ -1,51 +1,18 @@
 package org.example;
 
 
-import java.util.ArrayList;
+import java.io.*;
 
 public class Main {
-    public static void main(String[] args) {
-//        int[] a = {5, 4, 3, 2, 1, 0};
-//        int[] b = {4, 1, 2};
-        System.out.println(Solution.solution(9));
-    }
-}
-
-class Solution {
-    public static int[][] solution(int n) {
-        int[][] answer = new int[n][n];
-        int num = 1;
-        int x = 0;
-        int y = -1;
-        for (int i = 0; i < n; i++) {
-            y++;
-            answer[x][y] = num;
-            num++;
-        }
-        while (n > 1) {
-            n--;
-            for (int i = 0; i < n; i++) {
-                x++;
-                answer[x][y] = num;
-                num++;
-            }
-            for (int i = 0; i < n; i++) {
-                y--;
-                answer[x][y] = num;
-                num++;
-            }
-            n--;
-            for (int i = 0; i < n; i++) {
-                x--;
-                answer[x][y] = num;
-                num++;
-            }
-            for (int i = 0; i < n; i++) {
-                y++;
-                answer[x][y] = num;
-                num++;
-            }
-        }
-        return answer;
+    public static void main(String[] args) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        String[] tmp = bf.readLine().split(" ");
+        int a = Integer.parseInt(tmp[0]);
+        int b = Integer.parseInt(tmp[1]);
+        String n = Integer.toString(a,b);
+        n = n.toUpperCase();
+        bw.write(n);
+        bw.flush();
     }
 }
