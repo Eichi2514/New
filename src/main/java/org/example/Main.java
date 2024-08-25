@@ -6,14 +6,30 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        int num1 = Integer.parseInt(bf.readLine());
-        int num2 = 1;
+        int num = Integer.parseInt(bf.readLine());
         int count = 1;
-        while (num1 > num2) {
-            num2 += count*6;
+        int tmp1 = 1;
+        int tmp2 = 1;
+        while (num > count) {
+            num -= count;
             count++;
         }
-        bw.write(count + "");
+        if (count == 1) {
+        }
+        else if (count % 2 == 0) {
+            tmp2 = count;
+            for (int i = 0; i < num-1; i++) {
+             tmp1++;
+             tmp2--;
+            }
+        } else {
+            tmp1 = count;
+            for (int i = 0; i < num-1; i++) {
+                tmp1--;
+                tmp2++;
+            }
+        }
+        bw.write(tmp1 + "/" + tmp2);
         bw.flush();
     }
 }
