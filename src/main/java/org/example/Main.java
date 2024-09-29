@@ -7,18 +7,30 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        String[] tmp = bf.readLine().split(" ");
-        int n = Integer.parseInt(tmp[0]);
-        int k = Integer.parseInt(tmp[1]);
-        ArrayList list = new ArrayList();
-        for (int i = 1; i <= n; i++) {
-            if (n % i == 0) {
-                list.add(i);
+        while (true) {
+            String tmp = bf.readLine();
+            if (tmp.equals("-1")) {
+                break;
             }
+            int n = Integer.parseInt(tmp);
+            int n2 = 0;
+            ArrayList list = new ArrayList();
+            for (int i = 1; i <= n - 1; i++) {
+                if (n % i == 0) {
+                    list.add(i);
+                    n2 += i;
+                }
+            }
+            if (n2 == n) {
+                bw.write(n+" = 1");
+                for (int i = 1; i < list.size(); i++) {
+                    bw.write(" + "+list.get(i));
+                }
+            }else {
+                bw.write(n+" is NOT perfect.");
+            }
+            bw.newLine();
         }
-        if(list.size() > k-1) bw.write( list.get(k - 1)+"");
-        else bw.write( "0");
-        bw.newLine();
         bw.flush();
     }
 }
