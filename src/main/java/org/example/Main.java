@@ -6,16 +6,16 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        int n = Integer.parseInt(bf.readLine());
-        int a = 2;
-        while (n > 1) {
-            if (n % a == 0) {
-                bw.write(a + "\n");
-                n /= a;
-            } else {
-                a++;
-            }
-        }
+        String[] tmp = bf.readLine().split(" ");
+        int x = Integer.parseInt(tmp[0]);
+        int y = Integer.parseInt(tmp[1]);
+        int w = Integer.parseInt(tmp[2]);
+        int h = Integer.parseInt(tmp[3]);
+        int min = x;
+        if (y < min) min = y;
+        if (w-x < min) min = w-x;
+        if (h-y < min) min = h-y;
+        bw.write(min+"");
         bw.flush();
     }
 }
