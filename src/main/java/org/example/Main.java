@@ -6,35 +6,14 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        int n = Integer.parseInt(bf.readLine());
-        int[] x = new int[n];
-        int[] y = new int[n];
-        for (int i = 0; i < n; i++) {
-            String[] tmp = bf.readLine().split(" ");
-            x[i] = Integer.parseInt(tmp[0]);
-            y[i] = Integer.parseInt(tmp[1]);
-        }
-        int xMin = x[0];
-        int xMax = x[0];
-        int yMin = y[0];
-        int yMax = y[0];
-        for (int i = 0; i < n; i++) {
-            if (x[i] < xMin) {
-                xMin = x[i];
-            }
-            if (x[i] > xMax) {
-                xMax = x[i];
-            }
-            if (y[i] < yMin) {
-                yMin = y[i];
-            }
-            if (y[i] > yMax) {
-                yMax = y[i];
-            }
-        }
-        int asdf = (xMax - xMin) * (yMax - yMin);
-        if (n > 1) bw.write(asdf + "");
-        else bw.write(0 + "");
+        int a = Integer.parseInt(bf.readLine());
+        int b = Integer.parseInt(bf.readLine());
+        int c = Integer.parseInt(bf.readLine());
+        if (a == 60 && b == 60 && c == 60) bw.write("Equilateral");
+        else if (a + b + c == 180) {
+            if (a == b || a == c || b == c) bw.write("Isosceles");
+            else bw.write("Scalene");
+        } else bw.write("Error");
         bw.flush();
     }
 }
