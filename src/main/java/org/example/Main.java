@@ -6,25 +6,35 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        int tmp = Integer.parseInt(bf.readLine());
-        String[] tmp2 = bf.readLine().split(" ");
-        int count = 0;
-        for (int i = 0; i < tmp; i++) {
-            int n = Integer.parseInt(tmp2[i]);
-            boolean chack = true;
-            if (n >= 2) {
-                for (int j = 2; j <= Math.sqrt(n); j++) {
-                    if (n % j == 0) {
-                        chack = false;
+        int n = Integer.parseInt(bf.readLine());
+        int m = Integer.parseInt(bf.readLine());
+        int min = 0;
+        int max = 0;
+        boolean chack = true;
+        for (int i = n; i <= m; i++) {
+            boolean chack2 = true;
+            if (i >= 2) {
+                for (int j = 2; j * j <= i; j++) {
+                    if (i % j == 0) {
+                        chack2 = false;
                         break;
                     }
                 }
-                if (chack) {
-                    count++;
+                if (chack2) {
+                    max += i;
+                    if (chack) {
+                        min = i;
+                        chack = false;
+                    }
                 }
             }
         }
-        bw.write(count + "");
+        if (max != 0) {
+            bw.write(max + "\n");
+            bw.write(min + "");
+        } else {
+            bw.write("-1");
+        }
         bw.flush();
     }
 }
