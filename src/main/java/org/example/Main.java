@@ -6,14 +6,17 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        int a = Integer.parseInt(bf.readLine());
-        int b = Integer.parseInt(bf.readLine());
-        int c = Integer.parseInt(bf.readLine());
-        if (a == 60 && b == 60 && c == 60) bw.write("Equilateral");
-        else if (a + b + c == 180) {
-            if (a == b || a == c || b == c) bw.write("Isosceles");
-            else bw.write("Scalene");
-        } else bw.write("Error");
+        while (true) {
+            String[] tmp = bf.readLine().split(" ");
+            if (tmp[0].equals("0") && tmp[1].equals("0") && tmp[2].equals("0")) break;
+            int a = Integer.parseInt(tmp[0]);
+            int b = Integer.parseInt(tmp[1]);
+            int c = Integer.parseInt(tmp[2]);
+            if (a >= b + c || b >= a + c || c >= a + b) bw.write("Invalid\n");
+            else if (a == b && b == c && a == c) bw.write("Equilateral\n");
+            else if (a == b || a == c || b == c) bw.write("Isosceles\n");
+            else bw.write("Scalene\n");
+        }
         bw.flush();
     }
 }
