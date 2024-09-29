@@ -6,13 +6,20 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        String[] tmps = bf.readLine().split(" ");
-        double A = Double.parseDouble(tmps[0]);
-        double B = Double.parseDouble(tmps[1]);
-        double V = Double.parseDouble(tmps[2]);
-        int count = (int) Math.ceil((V-B)/(A-B));
-
-        bw.write(count + "");
+        while (true) {
+            String[] tmp = bf.readLine().split(" ");
+            if(tmp[0].equals("0")&&tmp[1].equals("0")) break;
+            else if(Integer.parseInt(tmp[0])/Integer.parseInt(tmp[1])==0) {
+                bw.write("factor");
+                bw.newLine();
+            }else if(Integer.parseInt(tmp[0])%Integer.parseInt(tmp[1])==0) {
+                bw.write("multiple");
+                bw.newLine();
+            }else {
+                bw.write("neither");
+                bw.newLine();
+            }
+        }
         bw.flush();
     }
 }
