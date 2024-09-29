@@ -1,25 +1,24 @@
 package org.example;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        while (true) {
-            String[] tmp = bf.readLine().split(" ");
-            if(tmp[0].equals("0")&&tmp[1].equals("0")) break;
-            else if(Integer.parseInt(tmp[0])/Integer.parseInt(tmp[1])==0) {
-                bw.write("factor");
-                bw.newLine();
-            }else if(Integer.parseInt(tmp[0])%Integer.parseInt(tmp[1])==0) {
-                bw.write("multiple");
-                bw.newLine();
-            }else {
-                bw.write("neither");
-                bw.newLine();
+        String[] tmp = bf.readLine().split(" ");
+        int n = Integer.parseInt(tmp[0]);
+        int k = Integer.parseInt(tmp[1]);
+        ArrayList list = new ArrayList();
+        for (int i = 1; i <= n; i++) {
+            if (n % i == 0) {
+                list.add(i);
             }
         }
+        if(list.size() > k-1) bw.write( list.get(k - 1)+"");
+        else bw.write( "0");
+        bw.newLine();
         bw.flush();
     }
 }
