@@ -6,13 +6,26 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        String[] tmps = bf.readLine().split(" ");
-        int a1 = Integer.parseInt(tmps[0]);
-        int a0 = Integer.parseInt(tmps[1]);
-        int c = Integer.parseInt(bf.readLine());
-        int n0 = Integer.parseInt(bf.readLine());
-        boolean tmp = (a1 > c) ? false : (a1 == c) ? (a0 <= 0) : (a1 * n0 + a0 <= c * n0);
-        bw.write(tmp ? "1" : "0");
+        String[] NM = bf.readLine().split(" ");
+        int N = Integer.parseInt(NM[0]);
+        int M = Integer.parseInt(NM[1]);
+        String[] cardsText = bf.readLine().split(" ");
+        int[] cards = new int[cardsText.length];
+        for (int i = 0; i < cardsText.length; i++) {
+            cards[i] = Integer.parseInt(cardsText[i]);
+        }
+        int sum = 0;
+        for (int i = 0; i < N - 2; i++) {
+            for (int j = i + 1; j < N - 1; j++) {
+                for (int k = j + 1; k < N; k++) {
+                    int cardSum = cards[i] + cards[j] + cards[k];
+                    if (cardSum <= M) {
+                        sum = Math.max(sum, cardSum);
+                    }
+                }
+            }
+        }
+        bw.write(sum + "");
         bw.flush();
     }
 }
