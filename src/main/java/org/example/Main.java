@@ -6,26 +6,22 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        String[] NM = bf.readLine().split(" ");
-        int N = Integer.parseInt(NM[0]);
-        int M = Integer.parseInt(NM[1]);
-        String[] cardsText = bf.readLine().split(" ");
-        int[] cards = new int[cardsText.length];
-        for (int i = 0; i < cardsText.length; i++) {
-            cards[i] = Integer.parseInt(cardsText[i]);
-        }
-        int sum = 0;
-        for (int i = 0; i < N - 2; i++) {
-            for (int j = i + 1; j < N - 1; j++) {
-                for (int k = j + 1; k < N; k++) {
-                    int cardSum = cards[i] + cards[j] + cards[k];
-                    if (cardSum <= M) {
-                        sum = Math.max(sum, cardSum);
-                    }
-                }
+        String num = bf.readLine();
+        int N = Integer.parseInt(num);
+        int M = 0;
+        for (int i = Math.max(0, N - 9 * String.valueOf(N).length()); i < N; i++) {
+            int sum = 0;
+            int tmp = i;
+            while (tmp > 0) {
+                sum += tmp % 10;
+                tmp /= 10;
+            }
+            if (i + sum == N) {
+                M = i;
+                break;
             }
         }
-        bw.write(sum + "");
+        bw.write(M + "\n");
         bw.flush();
     }
 }
