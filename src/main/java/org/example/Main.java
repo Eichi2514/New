@@ -6,9 +6,13 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        long n = Integer.parseInt(bf.readLine());
-        bw.write((n * (n - 1) * (n - 2) / 6) + "\n");
-        bw.write("3");
+        String[] tmps = bf.readLine().split(" ");
+        int a1 = Integer.parseInt(tmps[0]);
+        int a0 = Integer.parseInt(tmps[1]);
+        int c = Integer.parseInt(bf.readLine());
+        int n0 = Integer.parseInt(bf.readLine());
+        boolean tmp = (a1 > c) ? false : (a1 == c) ? (a0 <= 0) : (a1 * n0 + a0 <= c * n0);
+        bw.write(tmp ? "1" : "0");
         bw.flush();
     }
 }
