@@ -6,17 +6,22 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        int count = Integer.parseInt(bf.readLine());
-        int num = 665;
-        int count2 = 0;
-        while (count != count2) {
-            num++;
-            String tmp = Integer.toString(num);
-            if (tmp.contains("666")) {
-                count2++;
+        int tmp = Integer.parseInt(bf.readLine());
+        int count = 0;
+        while (tmp >= 0) {
+            if (tmp % 5 == 0) {
+                count += tmp / 5;
+                tmp = 0;
+                break;
             }
+            tmp -= 3;
+            count++;
         }
-        bw.write(num+"");
+        if (tmp == 0) {
+            bw.write(count + "");
+        } else {
+            bw.write("-1");
+        }
         bw.flush();
     }
 }
