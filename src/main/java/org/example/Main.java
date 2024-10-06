@@ -5,12 +5,15 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int m = sc.nextInt();
-        if (n%m == 0){
-            System.out.print(m+"*"+n/m+"="+n);
-        }else if (m%n == 0){
-            System.out.print(n+"*"+m/n+"="+m);
-        }else System.out.print("none");
+        int count = 0;
+        for (int i = 0; i < 4; i++) {
+            int tmp = sc.nextInt();
+            if (tmp == 1) count++;
+        }
+        if (count == 1) System.out.println("도");
+        else if (count == 2) System.out.println("개");
+        else if (count == 3) System.out.println("걸");
+        else if (count == 4) System.out.println("윷");
+        else System.out.println("모");
     }
 }
