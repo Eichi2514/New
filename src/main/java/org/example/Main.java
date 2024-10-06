@@ -5,16 +5,12 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        double n = sc.nextInt();
-        double m = sc.nextInt();
-        double max = n+m;
-        if (n-m > max) max = n-m;
-        if (m-n > max) max = m-n;
-        if (n*m > max) max = n*m;
-        if (n/m > max) max = n/m;
-        if (m/n > max) max = m/n;
-        if (Math.pow(n,m) > max) max = Math.pow(n,m);
-        if (Math.pow(m,n) > max) max = Math.pow(m,n);
-        System.out.printf("%6f",max);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        if (n%m == 0){
+            System.out.printf(m+"*"+n/m+"="+n);
+        }else if (m%n == 0){
+            System.out.printf(n+"*"+m/n+"="+m);
+        }else System.out.printf("none");
     }
 }
