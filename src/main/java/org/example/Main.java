@@ -8,9 +8,9 @@ public class Main {
         int n = sc.nextInt();
         int m = sc.nextInt();
         if (n%m == 0){
-            System.out.printf(m+"*"+n/m+"="+n);
+            System.out.print(m+"*"+n/m+"="+n);
         }else if (m%n == 0){
-            System.out.printf(n+"*"+m/n+"="+m);
-        }else System.out.printf("none");
+            System.out.print(n+"*"+m/n+"="+m);
+        }else System.out.print("none");
     }
 }
