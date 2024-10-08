@@ -6,10 +6,11 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int count = 0;
+        int max = 0;
         for (int i = 1; i <= n; i++) {
-            if (i % 10 == 1) count++;
+            int a = sc.nextInt();
+            if (max < a) max = a;
         }
-        System.out.println(count);
+        System.out.println(max);
     }
 }
