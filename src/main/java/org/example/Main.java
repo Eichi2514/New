@@ -5,12 +5,15 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int a = sc.nextInt();
-        int b = sc.nextInt();
-        int c = 0;
-        for (int i = a; i <= b; i++) {
-            if (i % 3 == 0) c += i;
+        int[] nums = new int[10];
+        boolean flag = true;
+        for (int i = 0; i < 10; i++) {
+            nums[i] = sc.nextInt();
+            if (nums[i] % 5 == 0 && flag) {
+                System.out.println(nums[i]);
+                flag = false;
+            }
         }
-        System.out.println(c);
+        if (flag) System.out.println(0);
     }
 }
