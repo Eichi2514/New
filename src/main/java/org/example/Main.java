@@ -9,9 +9,14 @@ public class Main {
         int m = sc.nextInt();
         int sum = 0;
         for (int i = n; i <= m; i++) {
-            if (i % 2 != 0) sum += i;
-            else sum -= i;
+            if (i % 2 != 0) {
+                System.out.print("+" + i);
+                sum += i;
+            } else {
+                System.out.print("-" + i);
+                sum -= i;
+            }
         }
-        System.out.println(sum);
+        System.out.println("=" + sum);
     }
 }
