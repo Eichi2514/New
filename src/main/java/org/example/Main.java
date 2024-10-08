@@ -5,21 +5,31 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int a = sc.nextInt();
-        int b = sc.nextInt();
-        int c = sc.nextInt();
-        String CRASH = "PASS";
-        String PASS = "";
-        if (a <= 170) {
-            CRASH = "CRASH";
-            PASS = a + "";
-        } else if (b <= 170) {
-            CRASH = "CRASH";
-            PASS = b + "";
-        } else if (c <= 170) {
-            CRASH = "CRASH";
-            PASS = c + "";
+        String tmp = sc.nextLine();
+        String[] tmps = null;
+        if (tmp.contains("+")) tmps = tmp.split("\\+");
+        else if (tmp.contains("-")) tmps = tmp.split("-");
+        else if (tmp.contains("*")) tmps = tmp.split("\\*");
+        else if (tmp.contains("/")) tmps = tmp.split("/");
+        if (tmp.contains("+")) {
+            int a = Integer.parseInt(tmps[0]);
+            int b = Integer.parseInt(tmps[1]);
+            System.out.println(a + b);
         }
-        System.out.println(CRASH + " " + PASS);
+        else if (tmp.contains("-")) {
+            int a = Integer.parseInt(tmps[0]);
+            int b = Integer.parseInt(tmps[1]);
+            System.out.println(a - b);
+        }
+        else if (tmp.contains("*")) {
+            int a = Integer.parseInt(tmps[0]);
+            int b = Integer.parseInt(tmps[1]);
+            System.out.println(a * b);
+        }
+        else if (tmp.contains("/")) {
+            double a = Integer.parseInt(tmps[0]);
+            double b = Integer.parseInt(tmps[1]);
+            System.out.printf("%.2f",a / b);
+        }
     }
 }
