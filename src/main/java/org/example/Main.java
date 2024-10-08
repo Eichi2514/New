@@ -9,7 +9,7 @@ public class Main {
         int sum = 0;
         for (int i = 0; i < n; i++) {
             int a = sc.nextInt();
-            sum += a;
+            if (a % 5 == 0) sum += a;
         }
         System.out.println(sum);
     }
