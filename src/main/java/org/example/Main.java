@@ -1,21 +1,15 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
 class Solution {
-    public long solution(long n) {
-        ArrayList<Long> tmps = new ArrayList<>();
-        while (n > 0) {
-            tmps.add(n % 10);
-            n /= 10;
+    public boolean solution(int x) {
+        boolean answer = true;
+        int tmp = x;
+        int sum = 0;
+        while (tmp > 0) {
+            sum += tmp % 10;
+            tmp /= 10;
         }
-        Collections.sort(tmps, Collections.reverseOrder());
-        String tmp = "";
-        for (int i = 0; i < tmps.size(); i++) {
-            tmp += tmps.get(i);
-        }
-        long answer = Long.parseLong(tmp.toString());
+        if (x%sum != 0) answer = false;
         return answer;
     }
 }
@@ -23,7 +17,10 @@ class Solution {
 public class Main {
     public static void main(String[] args) {
         // int[] arr = {1,2,3,4};
-        System.out.println(new Solution().solution(118372));
+        System.out.println(new Solution().solution(10));
+        System.out.println(new Solution().solution(12));
+        System.out.println(new Solution().solution(11));
+        System.out.println(new Solution().solution(13));
     }
 }
 
