@@ -1,19 +1,12 @@
 package org.example;
 
 class Solution {
-    public long solution(int a, int b) {
-        long answer = 0;
-        int max;
-        int min;
-        if (a > b) {
-            max = a;
-            min = b;
-        }else {
-            max = b;
-            min = a;
-        }
-        for (int i = min; i <= max; i++) {
-            answer += i;
+    public String solution(String[] seoul) {
+        String answer = "";
+        for (int i = 0; i < seoul.length; i++) {
+            if (seoul[i].equals("Kim")) {
+                answer = "김서방은 " + i + "에 있다";
+            }
         }
         return answer;
     }
@@ -21,10 +14,9 @@ class Solution {
 
 public class Main {
     public static void main(String[] args) {
-        // int[] arr = {1,2,3,4};
-        System.out.println(new Solution().solution(3, 5));
-        System.out.println(new Solution().solution(3, 3));
-        System.out.println(new Solution().solution(5, 3));
+        // int[] asd = {1,2,3,4};
+        String[] qwe = {"Jane", "Kim"};
+        System.out.println(new Solution().solution(qwe));
     }
 }
 
