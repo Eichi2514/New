@@ -1,17 +1,11 @@
 package org.example;
 
 class Solution {
-    public int solution(int num) {
+    public int solution(int[] absolutes, boolean[] signs) {
         int answer = 0;
-        long num2 = num;
-        while (num2 != 1) {
-            answer++;
-            if (num2 % 2 == 0) num2 /= 2;
-            else num2 = (num2 * 3) + 1;
-            if (answer >= 500) {
-                answer = -1;
-                break;
-            }
+        for (int i = 0; i < absolutes.length; i++) {
+            if (signs[i]) answer += absolutes[i];
+            else answer -= absolutes[i];
         }
         return answer;
     }
@@ -19,11 +13,10 @@ class Solution {
 
 public class Main {
     public static void main(String[] args) {
-        // int[] asd = {1,2,3,4};
+        int[] asd = {4, 7, 12};
         // String[] qwe = {"Jane", "Kim"};
-        System.out.println(new Solution().solution(1));
-        System.out.println(new Solution().solution(16));
-        System.out.println(new Solution().solution(626331));
+        boolean[] zxc = {true, false, true};
+        System.out.println(new Solution().solution(asd, zxc));
     }
 }
 
