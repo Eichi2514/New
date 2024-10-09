@@ -1,17 +1,18 @@
 package org.example;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 class Solution {
-    public int solution(int[] numbers) {
-        int answer = 0;
-        for (int j = 0; j < 10; j++) {
-            boolean chack = true;
-            for (int i = 0; i < numbers.length; i++) {
-                if (numbers[i] == j) {
-                    chack = false;
-                }
+    public ArrayList<Integer> solution(int[] arr, int divisor) {
+        ArrayList<Integer> answer = new ArrayList<>();
+        for (int i : arr) {
+            if (i % divisor == 0) {
+                answer.add(i);
             }
-            if (chack) answer += j;
         }
+        if (answer.isEmpty()) answer.add(-1);
+        Collections.sort(answer);
         return answer;
     }
 }
@@ -19,9 +20,9 @@ class Solution {
 public class Main {
     public static void main(String[] args) {
         // String[] qwe = {"Jane", "Kim"};
-        int[] asd = {1,2,3,4,6,7,8,0};
+        int[] asd = {5, 9, 7, 10};
         // boolean[] zxc = {true, false, true};
-        System.out.println(new Solution().solution(asd));
+        System.out.println(new Solution().solution(asd, 5));
     }
 }
 
