@@ -1,19 +1,21 @@
 package org.example;
 
 class Solution {
-    public int[] solution(int n, int m) {
-        int a = n;
-        int b = m;
-        while (b != 0) {
-            int tmp = b;
-            b = a % b;
-            a = tmp;
+    public int solution(int n) {
+        StringBuilder tmp = new StringBuilder();
+        while (n > 0) {
+            tmp.append(n % 3);
+            n /= 3;
         }
-        int max = a;
-        int min = (n * m) / max;
-        return new int[]{max, min};
+        int answer = 0;
+        for (int i = 0; i < tmp.length(); i++) {
+            answer += (int) ((tmp.charAt(i) - '0') * Math.pow(3, tmp.length()-i-1));
+        }
+        return answer;
     }
 }
+
+
 
 
 public class Main {
@@ -24,7 +26,7 @@ public class Main {
         // boolean[] zxc = {true, false, true};
         // int[][] asd3 = {{1,2}, {2,3}};
         // int[][] asd4 = {{3,4}, {5,6}};
-        System.out.println(new Solution().solution(2, 5));
+        System.out.println(new Solution().solution(45));
     }
 }
 
