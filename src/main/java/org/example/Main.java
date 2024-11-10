@@ -1,21 +1,19 @@
 package org.example;
 
 class Solution {
-    public int solution(int n) {
-        StringBuilder tmp = new StringBuilder();
-        while (n > 0) {
-            tmp.append(n % 3);
-            n /= 3;
-        }
+    public int solution(String t, String p) {
         int answer = 0;
-        for (int i = 0; i < tmp.length(); i++) {
-            answer += (int) ((tmp.charAt(i) - '0') * Math.pow(3, tmp.length()-i-1));
+        long pNumber = Long.parseLong(p);
+        for (int i = 0; i <= t.length() - p.length(); i++) {
+            long tNumber = Long.parseLong(t.substring(i, i + p.length()));
+            System.out.println("tNumber : " + tNumber);
+            if (tNumber <= pNumber) {
+                answer++;
+            }
         }
         return answer;
     }
 }
-
-
 
 
 public class Main {
@@ -26,7 +24,7 @@ public class Main {
         // boolean[] zxc = {true, false, true};
         // int[][] asd3 = {{1,2}, {2,3}};
         // int[][] asd4 = {{3,4}, {5,6}};
-        System.out.println(new Solution().solution(45));
+        System.out.println(new Solution().solution("3141592", "271"));
     }
 }
 
