@@ -1,23 +1,42 @@
 package org.example;
 
+import java.util.*;
+
 class Solution {
-    public int[] solution(String[] wallpaper) {
-        int[] answer = {};
-        int a = 50;
-        int b = 50;
-        int c = 0;
-        int d = 0;
-        for (int i = 0; i < wallpaper.length; i++) {
-            for (int j = 0; j < wallpaper[i].length(); j++) {
-                if (wallpaper[i].charAt(j) == '#') {
-                    if (a > i) a = i;
-                    if (b > j) b = j;
-                    if (c < i) c = i;
-                    if (d < j) d = j;
-                }
-            }
+    public ArrayList<Integer> solution(String today, String[] terms, String[] privacies) {
+        ArrayList<Integer> answer = new ArrayList<>();
+        HashMap<String, Integer> map = new HashMap<>();
+
+        String[] todays = today.split("\\.");
+
+        int year = Integer.parseInt(todays[0]);
+        int month = Integer.parseInt(todays[1]);
+        int day = Integer.parseInt(todays[2]);
+
+        String[] tmps = {};
+        for (int i = 0; i < terms.length; i++) {
+            tmps = terms[i].split(" ");
+            map.put(tmps[0], Integer.parseInt(tmps[1]));
         }
-        answer = new int[] {a, b, c+1, d+1};
+
+        for (int i = 0; i < privacies.length; i++) {
+            String[] tmps2 = privacies[i].split(" ");
+            String[] tmp = tmps2[0].split("\\.");
+
+            int year2 = Integer.parseInt(tmp[0]);
+            int month2 = Integer.parseInt(tmp[1]);
+            int day2 = Integer.parseInt(tmp[2]);
+
+            if (month2 + map.get(tmps2[1]) > 12) {
+                year2 += (month2 + map.get(tmps2[1]) - 1) / 12;
+                month2 = (month2 + map.get(tmps2[1]) - 1) % 12 + 1;
+            } else month2 += map.get(tmps2[1]);
+
+            if (year > year2) answer.add(i + 1);
+            else if (year == year2 && month > month2) answer.add(i + 1);
+            else if (year == year2 && month == month2 && day >= day2) answer.add(i + 1);
+        }
+
         return answer;
     }
 }
