@@ -1,53 +1,73 @@
 package org.example;
 
-import java.util.Arrays;
+import java.util.*;
 
 class Solution {
-    public int solution(int[] mats, String[][] park) {
-        int answer = -1;
+    public int[] solution(String[] id_list, String[] report, int k) {
+        HashMap<String, Set<String>> reportMap = new HashMap<>();
+        HashMap<String, Integer> reportedCountMap = new HashMap<>();
 
-        Arrays.sort(mats);
+        for (String id : id_list) {
+            reportMap.put(id, new HashSet<>());
+        }
 
-        for (int i = mats.length - 1; i >= 0; i--) {
-            for (int j = 0; j <= park.length - mats[i]; j++) {
-                for (int k = 0; k <= park[j].length - mats[i]; k++) {
-                    boolean tmp = true;
-                    for (int l = j; l < j + mats[i]; l++) {
-                        for (int m = k; m < k + mats[i]; m++) {
-                            if (!park[l][m].equals("-1")) {
-                                tmp = false;
-                                break;
-                            }
-                        }
-                        if (!tmp) break;
-                    }
-                    if (tmp) return mats[i];
-                }
+        for (String r : report) {
+            String[] parts = r.split(" ");
+            String reporter = parts[0];
+            String reported = parts[1];
+            reportMap.get(reporter).add(reported);
+        }
+
+        for (Set<String> reportedSet : reportMap.values()) {
+            for (String reported : reportedSet) {
+                reportedCountMap.put(reported, reportedCountMap.getOrDefault(reported, 0) + 1);
             }
         }
+
+        HashSet<String> suspendedUsers = new HashSet<>();
+        for (String user : reportedCountMap.keySet()) {
+            if (reportedCountMap.get(user) >= k) {
+                suspendedUsers.add(user);
+            }
+        }
+
+        int[] answer = new int[id_list.length];
+        for (int i = 0; i < id_list.length; i++) {
+            String user = id_list[i];
+            int mailCount = 0;
+
+            for (String reported : reportMap.get(user)) {
+                if (suspendedUsers.contains(reported)) {
+                    mailCount++;
+                }
+            }
+            answer[i] = mailCount;
+        }
+
         return answer;
     }
 }
 
+
 public class Main {
     public static void main(String[] args) {
-        // String[] qwe = {"SOO","OXX","OOO"};
-        // String[] qwe2 = {"E 2","S 2","W 1"};
-        String[][] qwe =
-                {
-                        {"1", "-1"},
-                        {"1", "-1"}
-                };
-        int[] asd = {1};
+        String[] qwe = {"muzi", "frodo", "apeach", "neo"};
+        String[] qwe2 = {"muzi frodo", "apeach frodo", "frodo neo", "muzi neo", "apeach muzi"};
+        // String[][] qwe =
+        //         {
+        //                 {"1", "-1"},
+        //                 {"1", "-1"}
+        //         };
+        // int[] asd = {1};
         // int[] asd2 = {-3, -1, 0, 2};
         // boolean[] zxc = {true, false, true};
         // int[][] asd3 = {{1,2}, {2,3}};
         // int[][] asd4 = {{3,4}, {5,6}};
-        // int[] asd = new Solution().solution(qwe,qwe2);
-//         for (int i = 0; i < asd.length; i++) {
-//             System.out.println(asd[i]);
-//         }
-          System.out.println(new Solution().solution(asd, qwe));
+        int[] asd = new Solution().solution(qwe, qwe2, 2);
+        for (int i = 0; i < asd.length; i++) {
+            System.out.println(asd[i]);
+        }
+//        System.out.println(new Solution().solution(asd, qwe));
 //        System.out.println(new Solution().solution("=.="));
 //        System.out.println(new Solution().solution("123_.def"));
 //        System.out.println(new Solution().solution("abcdefghijklmn.p"));
