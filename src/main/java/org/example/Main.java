@@ -8,19 +8,19 @@ public class Main {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        String[] tmps = bf.readLine().split(" ");
-        int N = Integer.parseInt(tmps[0]);
-        int k = Integer.parseInt(tmps[1]);
+        String[] tmps = bf.readLine().split("");
 
-        String[] tmps2 = bf.readLine().split(" ");
-        int[] nums = new int[N];
-        for (int i = 0; i < N; i++) {
-            nums[i] = Integer.parseInt(tmps2[i]);
+        int[] nums = new int[tmps.length];
+
+        for (int i = 0; i < tmps.length; i++) {
+            nums[i] = Integer.parseInt(tmps[i]);
         }
 
         Arrays.sort(nums);
 
-        bw.write(nums[nums.length-k]+"");
+        for (int i = nums.length-1; i >= 0 ; i--) {
+            bw.write(nums[i] + "");
+        }
 
         bw.flush();
     }
