@@ -9,23 +9,29 @@ public class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         int n = Integer.parseInt(bf.readLine());
-
-        int[][] list = new int[n][2];
-
+        String[] tmps = new String[n];
         for (int i = 0; i < n; i++) {
-            String[] tmps = bf.readLine().split(" ");
-            list[i][0] = Integer.parseInt(tmps[0]);
-            list[i][1] = Integer.parseInt(tmps[1]);
+            String str = bf.readLine();
+            tmps[i] = str;
         }
 
-        Arrays.sort(list, (a1, a2) -> a1[0] - a2[0]);
-        Arrays.sort(list, (a1, a2) -> a1[1] - a2[1]);
+        tmps = Arrays.stream(tmps).distinct().toArray(String[]::new);
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < 2; j++) {
-                bw.write(list[i][j] + " ");
+        Arrays.sort(tmps);
+
+        int max = 0;
+
+        for (int i = 0; i < tmps.length; i++) {
+            if (tmps[i].length() > max) max = tmps[i].length();
+        }
+
+        for (int i = 1; i <= max; i++) {
+            for (int j = 0; j < tmps.length; j++) {
+                if (tmps[j].length() == i){
+                    bw.write(tmps[j]);
+                    bw.newLine();
+                }
             }
-            bw.newLine();
         }
 
         bw.flush();
