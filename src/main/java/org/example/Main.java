@@ -8,17 +8,21 @@ public class Main {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int n = Integer.parseInt(bf.readLine());
+        int sum = 0;
+        int[] arr = new int[5];
 
-        int[] arr = new int[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = Integer.parseInt(bf.readLine());
+        for (int i = 0; i < 5; i++) {
+            int n = Integer.parseInt(bf.readLine());
+            arr[i] = n;
+            sum += n;
         }
+
         Arrays.sort(arr);
-        for (int i = 0; i < n; i++) {
-            bw.write(arr[i]+"");
-            bw.newLine();
-        }
+
+        bw.write((sum / 5) + "");
+        bw.newLine();
+        bw.write(arr[2] + "");
+
         bw.flush();
     }
 }
