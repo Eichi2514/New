@@ -1,7 +1,6 @@
 package org.example;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class Main {
@@ -10,25 +9,21 @@ public class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         int n = Integer.parseInt(bf.readLine());
-        int[] nums = new int[n];
-        String[] strs = bf.readLine().split(" ");
-        HashMap<Integer, Integer> map = new HashMap<>();
+        String[] tmps1 = bf.readLine().split(" ");
+
+        int m = Integer.parseInt(bf.readLine());
+        String[] tmps2 = bf.readLine().split(" ");
+
+        HashMap<String, Integer> map = new HashMap<>();
+        for (int i = 0; i < m; i++) {
+            map.put(tmps2[i], 0);
+        }
         for (int i = 0; i < n; i++) {
-            nums[i] = Integer.parseInt(strs[i]);
+            map.put(tmps1[i], 1);
         }
 
-        Arrays.sort(nums);
-        int index = 0;
-        for (int i = 0; i < n; i++) {
-            if(map.get(nums[i]) == null) {
-                map.put(nums[i], index);
-                index++;
-            }
-        }
-
-        for (int i = 0; i < n; i++) {
-            int a = Integer.parseInt(strs[i]);
-            bw.write(map.get(a) + " ");
+        for (int i = 0; i < m; i++) {
+            bw.write(map.get(tmps2[i]) + " ");
         }
 
         bw.flush();
