@@ -8,18 +8,24 @@ public class Main {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        String[] tmps = bf.readLine().split("");
+        int n = Integer.parseInt(bf.readLine());
 
-        int[] nums = new int[tmps.length];
+        int[][] list = new int[n][2];
 
-        for (int i = 0; i < tmps.length; i++) {
-            nums[i] = Integer.parseInt(tmps[i]);
+        for (int i = 0; i < n; i++) {
+            String[] tmps = bf.readLine().split(" ");
+            list[i][0] = Integer.parseInt(tmps[0]);
+            list[i][1] = Integer.parseInt(tmps[1]);
         }
 
-        Arrays.sort(nums);
+        Arrays.sort(list, (a1, a2) -> a1[1] - a2[1]);
+        Arrays.sort(list, (a1, a2) -> a1[0] - a2[0]);
 
-        for (int i = nums.length-1; i >= 0 ; i--) {
-            bw.write(nums[i] + "");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < 2; j++) {
+                bw.write(list[i][j] + " ");
+            }
+            bw.newLine();
         }
 
         bw.flush();
