@@ -8,20 +8,19 @@ public class Main {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int sum = 0;
-        int[] arr = new int[5];
+        String[] tmps = bf.readLine().split(" ");
+        int N = Integer.parseInt(tmps[0]);
+        int k = Integer.parseInt(tmps[1]);
 
-        for (int i = 0; i < 5; i++) {
-            int n = Integer.parseInt(bf.readLine());
-            arr[i] = n;
-            sum += n;
+        String[] tmps2 = bf.readLine().split(" ");
+        int[] nums = new int[N];
+        for (int i = 0; i < N; i++) {
+            nums[i] = Integer.parseInt(tmps2[i]);
         }
 
-        Arrays.sort(arr);
+        Arrays.sort(nums);
 
-        bw.write((sum / 5) + "");
-        bw.newLine();
-        bw.write(arr[2] + "");
+        bw.write(nums[nums.length-k]+"");
 
         bw.flush();
     }
