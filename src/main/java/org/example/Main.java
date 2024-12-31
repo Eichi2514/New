@@ -18,8 +18,8 @@ public class Main {
             list[i][1] = Integer.parseInt(tmps[1]);
         }
 
-        Arrays.sort(list, (a1, a2) -> a1[1] - a2[1]);
         Arrays.sort(list, (a1, a2) -> a1[0] - a2[0]);
+        Arrays.sort(list, (a1, a2) -> a1[1] - a2[1]);
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < 2; j++) {
