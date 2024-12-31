@@ -1,7 +1,8 @@
 package org.example;
 
 import java.io.*;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -9,19 +10,25 @@ public class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         int n = Integer.parseInt(bf.readLine());
-        String[][] tmps = new String[n][2];
-
+        int[] nums = new int[n];
+        String[] strs = bf.readLine().split(" ");
+        HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < n; i++) {
-            String[] tmps2 = bf.readLine().split(" ");
-            tmps[i][0] = tmps2[0];
-            tmps[i][1] = tmps2[1];
+            nums[i] = Integer.parseInt(strs[i]);
         }
 
-        Arrays.sort(tmps, (a1, a2) -> Integer.parseInt(a1[0]) - Integer.parseInt(a2[0]));
+        Arrays.sort(nums);
+        int index = 0;
+        for (int i = 0; i < n; i++) {
+            if(map.get(nums[i]) == null) {
+                map.put(nums[i], index);
+                index++;
+            }
+        }
 
         for (int i = 0; i < n; i++) {
-            bw.write(tmps[i][0] + " " + tmps[i][1]);
-            bw.newLine();
+            int a = Integer.parseInt(strs[i]);
+            bw.write(map.get(a) + " ");
         }
 
         bw.flush();
