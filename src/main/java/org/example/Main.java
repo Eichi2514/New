@@ -1,7 +1,6 @@
 package org.example;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class Main {
@@ -9,37 +8,37 @@ public class Main {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int n = Integer.parseInt(bf.readLine());
-        HashMap<String, Boolean> map = new HashMap<>();
-        int num = 0;
-        for (int i = 0; i < n; i++) {
-            String[] tmp = bf.readLine().split(" ");
-            if (tmp[1].equals("enter")) {
-                map.put(tmp[0], true);
-                num++;
-            }
-            else if (tmp[1].equals("leave")) {
-                map.put(tmp[0], false);
-                num--;
-            }
+        String[] nums = bf.readLine().split(" ");
+        int N = Integer.parseInt(nums[0]);
+        int M = Integer.parseInt(nums[1]);
+
+        String[] poketList = new String[N + 1];
+        HashMap<String, Integer> poketMap = new HashMap<>();
+
+        for (int i = 1; i <= N; i++) {
+            String name = bf.readLine();
+            poketList[i] = name;
+            poketMap.put(name, i);
         }
 
-        String[] tmps = new String[num];
-        int index = 0;
-        for (String key : map.keySet()) {
-            if (map.get(key)) {
-                tmps[index] = key;
-                index++;
+        for (int i = 0; i < M; i++) {
+            String tmp = bf.readLine();
+            if (isNumeric(tmp)) {
+                bw.write(poketList[Integer.parseInt(tmp)] + "\n");
+            } else {
+                bw.write(poketMap.get(tmp) + "\n");
             }
-        }
-
-        Arrays.sort(tmps);
-
-        for (int i = tmps.length - 1; i >= 0; i--) {
-            bw.write(tmps[i]);
-            bw.newLine();
         }
 
         bw.flush();
+    }
+
+    private static boolean isNumeric(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }
