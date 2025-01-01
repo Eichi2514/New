@@ -1,33 +1,33 @@
 package org.example;
 
 import java.io.*;
-import java.util.HashMap;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        HashMap<String, Integer> map = new HashMap<>();
+        String[] nums = bf.readLine().split(" ");
+        int n = Integer.parseInt(nums[0]);
+        int m = Integer.parseInt(nums[1]);
 
-        int n = Integer.parseInt(bf.readLine());
-        String[] strs1 = bf.readLine().split(" ");
-
+        Set<String> set1 = new HashSet<>();
         for (int i = 0; i < n; i++) {
-            int count = 1;
-            if (map.get(strs1[i]) != null) count = map.get(strs1[i]) + 1;
-            map.put(strs1[i], count);
+            set1.add(bf.readLine());
         }
 
-        int m = Integer.parseInt(bf.readLine());
-        String[] strs2 = bf.readLine().split(" ");
-
+        Set<String> result = new TreeSet<>();
         for (int i = 0; i < m; i++) {
-            if (map.get(strs2[i]) == null) {
-                bw.write("0 ");
-            } else {
-                bw.write(map.get(strs2[i]) + " ");
+            String str = bf.readLine();
+            if (set1.contains(str)) {
+                result.add(str);
             }
+        }
+
+        bw.write(result.size() + "\n");
+        for (String str : result) {
+            bw.write(str + "\n");
         }
 
         bw.flush();
