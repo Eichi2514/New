@@ -8,37 +8,28 @@ public class Main {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        String[] nums = bf.readLine().split(" ");
-        int N = Integer.parseInt(nums[0]);
-        int M = Integer.parseInt(nums[1]);
+        HashMap<String, Integer> map = new HashMap<>();
 
-        String[] poketList = new String[N + 1];
-        HashMap<String, Integer> poketMap = new HashMap<>();
+        int n = Integer.parseInt(bf.readLine());
+        String[] strs1 = bf.readLine().split(" ");
 
-        for (int i = 1; i <= N; i++) {
-            String name = bf.readLine();
-            poketList[i] = name;
-            poketMap.put(name, i);
+        for (int i = 0; i < n; i++) {
+            int count = 1;
+            if (map.get(strs1[i]) != null) count = map.get(strs1[i]) + 1;
+            map.put(strs1[i], count);
         }
 
-        for (int i = 0; i < M; i++) {
-            String tmp = bf.readLine();
-            if (isNumeric(tmp)) {
-                bw.write(poketList[Integer.parseInt(tmp)] + "\n");
+        int m = Integer.parseInt(bf.readLine());
+        String[] strs2 = bf.readLine().split(" ");
+
+        for (int i = 0; i < m; i++) {
+            if (map.get(strs2[i]) == null) {
+                bw.write("0 ");
             } else {
-                bw.write(poketMap.get(tmp) + "\n");
+                bw.write(map.get(strs2[i]) + " ");
             }
         }
 
         bw.flush();
-    }
-
-    private static boolean isNumeric(String str) {
-        try {
-            Integer.parseInt(str);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
     }
 }
