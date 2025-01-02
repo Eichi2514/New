@@ -1,24 +1,31 @@
 package org.example;
 
 import java.io.*;
-import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        String S = bf.readLine();
+        int n = Integer.parseInt(bf.readLine());
 
-        HashSet<String> set = new HashSet<>();
+        for (int i = 0; i < n; i++) {
+            String[] s = bf.readLine().split(" ");
+            int m = Integer.parseInt(s[0]);
+            int l = Integer.parseInt(s[1]);
 
-        for (int i = 0; i < S.length(); i++) {
-            for (int j = i + 1; j <= S.length(); j++) {
-                set.add(S.substring(i, j));
+            int a = m;
+            int b = l;
+            while (b != 0) {
+                int tmp = b;
+                b = a % b;
+                a = tmp;
             }
-        }
 
-        bw.write(set.size() + "");
+            int min = (m * l) / a;
+
+            bw.write(min + "\n");
+        }
         bw.flush();
     }
 }
