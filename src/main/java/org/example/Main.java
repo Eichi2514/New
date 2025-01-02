@@ -12,24 +12,29 @@ public class Main {
         int n = Integer.parseInt(nums[0]);
         int m = Integer.parseInt(nums[1]);
 
-        Set<String> set1 = new HashSet<>();
+        String[] strA = bf.readLine().split(" ");
+        String[] strB = bf.readLine().split(" ");
+
+        Set<Integer> setA = new HashSet<>();
+        Set<Integer> setB = new HashSet<>();
+
         for (int i = 0; i < n; i++) {
-            set1.add(bf.readLine());
+            setA.add(Integer.parseInt(strA[i]));
         }
 
-        Set<String> result = new TreeSet<>();
         for (int i = 0; i < m; i++) {
-            String str = bf.readLine();
-            if (set1.contains(str)) {
-                result.add(str);
-            }
+            setB.add(Integer.parseInt(strB[i]));
         }
 
-        bw.write(result.size() + "\n");
-        for (String str : result) {
-            bw.write(str + "\n");
-        }
+        Set<Integer> uniqueA = new HashSet<>(setA);
+        uniqueA.removeAll(setB);
 
+        Set<Integer> uniqueB = new HashSet<>(setB);
+        uniqueB.removeAll(setA);
+
+        int count = uniqueA.size() + uniqueB.size();
+
+        bw.write(count + "");
         bw.flush();
     }
 }
