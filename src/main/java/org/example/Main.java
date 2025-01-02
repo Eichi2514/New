@@ -8,20 +8,29 @@ public class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         String[] s = bf.readLine().split(" ");
-        long m = Long.parseLong(s[0]);
-        long l = Long.parseLong(s[1]);
+        long A1 = Long.parseLong(s[0]);
+        long B1 = Long.parseLong(s[1]);
 
-        long a = m;
-        long b = l;
+        String[] c = bf.readLine().split(" ");
+        long A2 = Long.parseLong(c[0]);
+        long B2 = Long.parseLong(c[1]);
+
+        long A = A1 * B2 + A2 * B1;
+        long B = B1 * B2;
+
+        long a = A;
+        long b = B;
+
         while (b != 0) {
-            long tmp = b;
+            long temp = b;
             b = a % b;
-            a = tmp;
+            a = temp;
         }
 
-        long min = (m * l) / a;
+        A /= a;
+        B /= a;
 
-        bw.write(min + "\n");
+        bw.write(A + " " + B);
 
         bw.flush();
     }
