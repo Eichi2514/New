@@ -8,33 +8,17 @@ public class Main {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        String[] nums = bf.readLine().split(" ");
-        int n = Integer.parseInt(nums[0]);
-        int m = Integer.parseInt(nums[1]);
+        String S = bf.readLine();
 
-        String[] strA = bf.readLine().split(" ");
-        String[] strB = bf.readLine().split(" ");
+        HashSet<String> set = new HashSet<>();
 
-        Set<Integer> setA = new HashSet<>();
-        Set<Integer> setB = new HashSet<>();
-
-        for (int i = 0; i < n; i++) {
-            setA.add(Integer.parseInt(strA[i]));
+        for (int i = 0; i < S.length(); i++) {
+            for (int j = i + 1; j <= S.length(); j++) {
+                set.add(S.substring(i, j));
+            }
         }
 
-        for (int i = 0; i < m; i++) {
-            setB.add(Integer.parseInt(strB[i]));
-        }
-
-        Set<Integer> uniqueA = new HashSet<>(setA);
-        uniqueA.removeAll(setB);
-
-        Set<Integer> uniqueB = new HashSet<>(setB);
-        uniqueB.removeAll(setA);
-
-        int count = uniqueA.size() + uniqueB.size();
-
-        bw.write(count + "");
+        bw.write(set.size() + "");
         bw.flush();
     }
 }
