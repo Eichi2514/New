@@ -1,19 +1,17 @@
 package org.example;
 
 class Solution {
-    public static String solution(String s) {
-        String answer = "";
-        String tmp = " " + s;
+    boolean solution(String s) {
 
-        for (int i = 1; i <= s.length(); i++) {
-            if (tmp.charAt(i-1) == ' '){
-                String t = tmp.charAt(i) + "";
-                answer += t.toUpperCase();
-            } else {
-                String t = tmp.charAt(i) + "";
-                answer += t.toLowerCase();
-            }
+        int count = 0;
+        for(int i = 0; i < s.length(); i++){
+            if (s.charAt(i) == '(') count++;
+            else count--;
+
+            if (count < 0) return false;
         }
+
+        boolean answer = (count == 0);
 
         return answer;
     }
@@ -38,7 +36,7 @@ public class Main {
 //        for (int i = 0; i < asd.length; i++) {
 //            System.out.println(asd[i]);
 //        }
-        System.out.println(Solution.solution("  for the what 1what  "));
+        System.out.println(new Solution().solution("()()"));
 //        System.out.println(new Solution().solution("=.="));
 //        System.out.println(new Solution().solution("123_.def"));
 //        System.out.println(new Solution().solution("abcdefghijklmn.p"));
