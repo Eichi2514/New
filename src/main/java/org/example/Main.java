@@ -1,18 +1,24 @@
 package org.example;
 
 class Solution {
-    boolean solution(String s) {
+    public int[] solution(String s) {
+        int count1 = 0;
+        int count2 = 0;
 
-        int count = 0;
-        for(int i = 0; i < s.length(); i++){
-            if (s.charAt(i) == '(') count++;
-            else count--;
-
-            if (count < 0) return false;
+        while(s.length() > 1){
+            String tmp = "";
+            for(int i = 0; i < s.length(); i++){
+                if (s.charAt(i) == '1'){
+                    tmp += "1";
+                } else {
+                    count2++;
+                }
+            }
+            s = Integer.toBinaryString(tmp.length());
+            count1++;
         }
 
-        boolean answer = (count == 0);
-
+        int[] answer = {count1, count2};
         return answer;
     }
 }
@@ -36,7 +42,7 @@ public class Main {
 //        for (int i = 0; i < asd.length; i++) {
 //            System.out.println(asd[i]);
 //        }
-        System.out.println(new Solution().solution("()()"));
+        System.out.println(new Solution().solution("110010101001"));
 //        System.out.println(new Solution().solution("=.="));
 //        System.out.println(new Solution().solution("123_.def"));
 //        System.out.println(new Solution().solution("abcdefghijklmn.p"));
