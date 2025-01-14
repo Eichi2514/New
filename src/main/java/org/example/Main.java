@@ -1,37 +1,48 @@
 package org.example;
 
-import java.io.*;
+import java.util.*;
 
-public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+class Solution {
+    public String solution(String s) {
 
-        String[] s = bf.readLine().split(" ");
-        long A1 = Long.parseLong(s[0]);
-        long B1 = Long.parseLong(s[1]);
+        String[] strs = s.split(" ");
 
-        String[] c = bf.readLine().split(" ");
-        long A2 = Long.parseLong(c[0]);
-        long B2 = Long.parseLong(c[1]);
+        int[] nums = new int[strs.length];
 
-        long A = A1 * B2 + A2 * B1;
-        long B = B1 * B2;
-
-        long a = A;
-        long b = B;
-
-        while (b != 0) {
-            long temp = b;
-            b = a % b;
-            a = temp;
+        for(int i = 0; i < strs.length; i++){
+            nums[i] = Integer.parseInt(strs[i]);
         }
 
-        A /= a;
-        B /= a;
+        Arrays.sort(nums);
 
-        bw.write(A + " " + B);
+        String answer = nums[0] + " " + nums[nums.length-1];
 
-        bw.flush();
+        return answer;
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+        // String[] qwe = {"muzi", "ryan", "frodo", "neo"};
+        // String[] qwe2 = {"muzi frodo", "muzi frodo", "ryan muzi", "ryan muzi", "ryan muzi", "frodo muzi", "frodo ryan", "neo muzi"};
+        // String[][] qwe =
+        //         {
+        //                 {"1", "-1"},
+        //                 {"1", "-1"}
+        //         };
+        // int[] asd = {3, 10, 1};
+        // int[] asd2 = {-3, -1, 0, 2};
+        // boolean[] zxc = {true, false, true};
+        // int[][] asd3 = {{1, 5}, {3, 5}};
+        // int[][] asd4 = {{3,4}, {5,6}};
+//        int[] asd = new Solution().solution(qwe, qwe2, 2);
+//        for (int i = 0; i < asd.length; i++) {
+//            System.out.println(asd[i]);
+//        }
+        System.out.println(new Solution().solution("1 2 3 4"));
+//        System.out.println(new Solution().solution("=.="));
+//        System.out.println(new Solution().solution("123_.def"));
+//        System.out.println(new Solution().solution("abcdefghijklmn.p"));
     }
 }
