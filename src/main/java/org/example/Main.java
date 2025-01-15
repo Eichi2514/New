@@ -2,16 +2,14 @@ package org.example;
 
 class Solution {
     public int solution(int n) {
-        int answer = 0;
-        for (int i = 0; i < n; i++) {
-            int num = 0;
-            for (int j = i + 1; j <= n; j++) {
-                num += j;
-                if (num >= n) break;
+        int tmp = Integer.bitCount(n);
+
+        while (true) {
+            n++;
+            if (Integer.bitCount(n) == tmp) {
+                return n;
             }
-            if (num == n) answer++;
         }
-        return answer;
     }
 }
 
