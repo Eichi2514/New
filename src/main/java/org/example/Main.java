@@ -1,17 +1,20 @@
 package org.example;
 
 class Solution {
-    public int solution(int n) {
-        int tmp = Integer.bitCount(n);
+    public long solution(int n) {
 
-        while (true) {
-            n++;
-            if (Integer.bitCount(n) == tmp) {
-                return n;
-            }
+        long[] tmp = new long[n + 1];
+        tmp[0] = 0;
+        tmp[1] = 1;
+
+        for (int i = 2; i <= n; i++) {
+            tmp[i] = (tmp[i - 2] + tmp[i - 1]) % 1234567;
         }
+
+        return tmp[n];
     }
 }
+
 
 
 public class Main {
