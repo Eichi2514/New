@@ -1,24 +1,16 @@
 package org.example;
 
 class Solution {
-    public int[] solution(String s) {
-        int count1 = 0;
-        int count2 = 0;
-
-        while(s.length() > 1){
-            String tmp = "";
-            for(int i = 0; i < s.length(); i++){
-                if (s.charAt(i) == '1'){
-                    tmp += "1";
-                } else {
-                    count2++;
-                }
+    public int solution(int n) {
+        int answer = 0;
+        for (int i = 0; i < n; i++) {
+            int num = 0;
+            for (int j = i + 1; j <= n; j++) {
+                num += j;
+                if (num >= n) break;
             }
-            s = Integer.toBinaryString(tmp.length());
-            count1++;
+            if (num == n) answer++;
         }
-
-        int[] answer = {count1, count2};
         return answer;
     }
 }
@@ -42,7 +34,7 @@ public class Main {
 //        for (int i = 0; i < asd.length; i++) {
 //            System.out.println(asd[i]);
 //        }
-        System.out.println(new Solution().solution("110010101001"));
+        System.out.println(new Solution().solution(15));
 //        System.out.println(new Solution().solution("=.="));
 //        System.out.println(new Solution().solution("123_.def"));
 //        System.out.println(new Solution().solution("abcdefghijklmn.p"));
