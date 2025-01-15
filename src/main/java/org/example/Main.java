@@ -1,17 +1,20 @@
 package org.example;
 
+import java.util.*;
+
 class Solution {
-    public long solution(int n) {
+    public int solution(String s) {
+        Stack<Character> stack = new Stack<>();
 
-        long[] tmp = new long[n + 1];
-        tmp[0] = 0;
-        tmp[1] = 1;
-
-        for (int i = 2; i <= n; i++) {
-            tmp[i] = (tmp[i - 2] + tmp[i - 1]) % 1234567;
+        for (char c : s.toCharArray()) {
+            if (!stack.isEmpty() && stack.peek() == c) {
+                stack.pop();
+            } else {
+                stack.push(c);
+            }
         }
 
-        return tmp[n];
+        return stack.isEmpty() ? 1 : 0;
     }
 }
 
@@ -35,7 +38,7 @@ public class Main {
 //        for (int i = 0; i < asd.length; i++) {
 //            System.out.println(asd[i]);
 //        }
-        System.out.println(new Solution().solution(15));
+        System.out.println(new Solution().solution("baabaa"));
 //        System.out.println(new Solution().solution("=.="));
 //        System.out.println(new Solution().solution("123_.def"));
 //        System.out.println(new Solution().solution("abcdefghijklmn.p"));
