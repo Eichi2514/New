@@ -1,24 +1,21 @@
 package org.example;
 
-import java.util.*;
-
 class Solution {
-    public int solution(String s) {
-        Stack<Character> stack = new Stack<>();
+    public int[] solution(int brown, int yellow) {
+        int total = brown + yellow;
 
-        for (char c : s.toCharArray()) {
-            if (!stack.isEmpty() && stack.peek() == c) {
-                stack.pop();
-            } else {
-                stack.push(c);
+        for (int i = 3; i <= total / 2; i++) {
+            if (total % i == 0) {
+                int j = total / i;
+                if ((i - 2) * (j - 2) == yellow) {
+                    return new int[]{j, i};
+                }
             }
         }
 
-        return stack.isEmpty() ? 1 : 0;
+        return new int[]{};
     }
 }
-
-
 
 public class Main {
     public static void main(String[] args) {
@@ -38,7 +35,7 @@ public class Main {
 //        for (int i = 0; i < asd.length; i++) {
 //            System.out.println(asd[i]);
 //        }
-        System.out.println(new Solution().solution("baabaa"));
+        System.out.println(new Solution().solution(8, 1));
 //        System.out.println(new Solution().solution("=.="));
 //        System.out.println(new Solution().solution("123_.def"));
 //        System.out.println(new Solution().solution("abcdefghijklmn.p"));
