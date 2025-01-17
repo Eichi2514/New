@@ -1,32 +1,24 @@
 package org.example;
 
-import java.util.*;
-
-class Solution {
-    public int solution(int k, int[] tangerine) {
-        Map<Integer, Integer> map = new HashMap<>();
-
-        for (int size : tangerine) {
-            map.put(size, map.getOrDefault(size, 0) + 1);
-        }
-
-        Integer[] arr = new Integer[map.size()];
-        int index = 0;
-
-        for (int value : map.values()) {
-            arr[index++] = value;
-        }
-
-        Arrays.sort(arr, (a, b) -> b - a);
-
-        int count = 0;
+class Solution{
+    public int solution(int n, int a, int b) {
         int answer = 0;
 
-        for (int a : arr) {
-            count += a;
-            answer++;
-            if (count >= k) {
-                break;
+        for(int i = 1; i <= n; i++){
+            if (a % 2 == 0){
+                if (a-1 == b) return i;
+
+                a /= 2;
+
+                if (b % 2 == 0) b /= 2;
+                else b = (b + 1) / 2;
+            } else{
+                if (a+1 == b) return i;
+
+                a = (a + 1) / 2;
+
+                if (b % 2 == 0) b /= 2;
+                else b = (b + 1) / 2;
             }
         }
 
@@ -37,7 +29,7 @@ class Solution {
 
 public class Main {
     public static void main(String[] args) {
-        String[] qwe = {"abc", "cbd", "ddd", "ddd", "dbc", "cbd"};
+        // String[] qwe = {"abc", "cbd", "ddd", "ddd", "dbc", "cbd"};
         // String[] qwe2 = {"muzi frodo", "muzi frodo", "ryan muzi", "ryan muzi", "ryan muzi", "frodo muzi", "frodo ryan", "neo muzi"};
         // String[][] qwe =
         //         {
