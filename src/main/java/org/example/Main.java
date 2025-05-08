@@ -5,25 +5,18 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[] tmps = sc.nextLine().split(" ");
-        int n = Integer.parseInt(tmps[0]);
-        int k = Integer.parseInt(tmps[1]);
-        boolean d = tmps[2].equals("L");
+        String[] temps = sc.nextLine().split(" ");
+        int n = Integer.parseInt(temps[0]);
+        int k = Integer.parseInt(temps[1]);
 
-        for (int i = 1; i <= n; i++) {
-            if (d) {
-                for (int j = 1; j <= i - 1; j++) {
-                    System.out.print(" ");
-                }
-                for (int j = 1; j <= k; j++) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (i == 0 || i == n - 1 || j == 0 || j == n - 1) {
                     System.out.print("*");
-                }
-            } else {
-                for (int j = 1; j <= n - i; j++) {
-                    System.out.print(" ");
-                }
-                for (int j = 1; j <= k; j++) {
+                } else if (Math.floorMod(i + j + 1, k) == 0) {
                     System.out.print("*");
+                } else {
+                    System.out.print(" ");
                 }
             }
             System.out.println();
