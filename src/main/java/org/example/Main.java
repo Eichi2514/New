@@ -5,21 +5,33 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[] temps = sc.nextLine().split(" ");
-        int n = Integer.parseInt(temps[0]);
-        int k = Integer.parseInt(temps[1]);
+        int h = sc.nextInt();
+        int r = sc.nextInt();
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (i == 0 || i == n - 1 || j == 0 || j == n - 1) {
-                    System.out.print("*");
-                } else if (Math.floorMod(i + j + 1, k) == 0) {
-                    System.out.print("*");
+        int a = 0;
+        boolean b = true;
+
+        for (int i = 0; i < ((h * 2) - 1) * r; i++) {
+            for (int j = 0; j <= a; j++) {
+                if (j == a) {
+                    System.out.println("*");
                 } else {
                     System.out.print(" ");
                 }
             }
-            System.out.println();
+
+            if (b) {
+                if (a < h - 1) a++;
+                else {
+                    b = false;
+                    a--;
+                    if (a < 0) a = 0;
+                }
+            } else {
+                if (a == 0) b = true;
+                a--;
+                if (a < 0) a = 0;
+            }
         }
     }
 }
