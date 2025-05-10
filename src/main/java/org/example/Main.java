@@ -5,33 +5,29 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int h = sc.nextInt();
-        int r = sc.nextInt();
+        int n = sc.nextInt();
+        int s = 2;
+        int m = n - 1;
 
-        int a = 0;
-        boolean b = true;
-
-        for (int i = 0; i < ((h * 2) - 1) * r; i++) {
-            for (int j = 0; j <= a; j++) {
-                if (j == a) {
-                    System.out.println("*");
+        for (int i = 1; i <= n * 2; i++) {
+            for (int j = 1; j <= m; j++) {
+                System.out.print(" ");
+            }
+            for (int j = 1; j <= s; j++) {
+                if (j == 1 || j == s) {
+                    System.out.print("*");
                 } else {
                     System.out.print(" ");
                 }
             }
-
-            if (b) {
-                if (a < h - 1) a++;
-                else {
-                    b = false;
-                    a--;
-                    if (a < 0) a = 0;
-                }
-            } else {
-                if (a == 0) b = true;
-                a--;
-                if (a < 0) a = 0;
+            if (i < n) {
+                m--;
+                s += 2;
+            } else if (i > n) {
+                m++;
+                s -= 2;
             }
+            System.out.println();
         }
     }
 }
