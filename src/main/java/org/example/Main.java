@@ -1,13 +1,19 @@
 package org.example;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        for (int i = 1; i <= 9; i++) {
-            for (int j = 2; j <= 5; j++) {
-                System.out.printf("%d x %d = %2d", j, i, i*j);
-                if (j != 5) System.out.print("\t");
-                else System.out.println();
-            }
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] temp = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            temp[i] = sc.nextInt();
+        }
+
+        for (int i = n-1; i >= 0; i--) {
+            System.out.print(temp[i] + " ");
         }
     }
 }
