@@ -1,4 +1,4 @@
-package codeup.p1403;
+package codeup.UP1400.p1403;
 
 import java.util.ArrayList;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package codeup.p1402;
+package codeup.UP1400.p1402;
 
 import java.util.Scanner;
 
