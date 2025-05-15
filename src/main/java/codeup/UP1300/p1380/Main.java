@@ -1,6 +1,6 @@
 package codeup.UP1300.p1380;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
