@@ -1,3 +1,3 @@
-package codeup.UP1100.p;
+package codeup.p;
 
 public class Main {public static void main(String[] args) {}}
